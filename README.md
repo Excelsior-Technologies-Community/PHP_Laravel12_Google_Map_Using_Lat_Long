@@ -183,7 +183,7 @@ Google Map loads with a marker at the specified location.
 Fully functional and dynamic.
 
 No database needed.
-
+```
 📚 Project Structure
 google-map-app/
 │
