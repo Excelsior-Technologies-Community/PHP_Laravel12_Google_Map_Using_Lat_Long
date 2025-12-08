@@ -1,59 +1,249 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Google Map Integration in Laravel 12 (Fully Explained)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+By: Manasi Patel
+Date: 2025
+Laravel Version: 12
 
-## About Laravel
+This project demonstrates how to integrate Google Maps inside a Laravel 12 application.
+Everything is explained in a very simple way so even beginners can understand clearly.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+⭐ Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This project teaches you how to:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Install and setup Laravel 12.
 
-## Learning Laravel
+Create a controller to manage map data.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Setup routes to load the map page.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Load Google Maps inside a Blade view.
 
-## Laravel Sponsors
+Pass latitude and longitude from Laravel to JavaScript.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Generate and use a Google Maps API key.
 
-### Premium Partners
+Display a marker on the map.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Fully responsive and beginner-friendly.
 
-## Contributing
+🧰 Requirements
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+PHP 8.2+ – Required by Laravel 12.
 
-## Code of Conduct
+Composer – For installing Laravel and dependencies.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Laravel 12 – Latest version.
 
-## Security Vulnerabilities
+Google Maps API Key – To safely load maps on your site.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+🚀 Step 1 — Create a New Laravel 12 Project
+composer create-project laravel/laravel google-map-app "12.*"
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Explanation:
+
+Downloads Laravel 12 project files.
+
+"12.*" ensures Laravel version 12 is installed.
+
+Creates a new folder called google-map-app.
+
+🚀 Step 2 — Go Inside the Project Folder
+cd google-map-app
+
+
+Explanation:
+You must be inside the project folder to run Laravel commands like php artisan serve or make:controller.
+
+🚀 Step 3 — Create a Controller
+php artisan make:controller MapController
+
+
+Explanation:
+
+Controllers handle logic and return views.
+
+MapController will manage the map page and send coordinates to the view.
+
+Laravel creates the file here:
+app/Http/Controllers/MapController.php
+
+🚀 Step 4 — Add Logic in Controller
+
+File: app/Http/Controllers/MapController.php
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class MapController extends Controller
+{
+    public function index()
+    {
+        // Default location (example: Excelsior Technologies, Ahmedabad)
+        // Latitude and Longitude values
+        $location = [
+            'lat' => 23.0455039,  // Latitude
+            'lng' => 72.5051614   // Longitude
+        ];
+
+        // Passing the $location array to the Blade view
+        return view('map', compact('location'));
+    }
+}
+
+
+Explanation:
+
+$location array stores latitude and longitude.
+
+compact('location') sends the array to the Blade view.
+
+Access in Blade as {{ $location['lat'] }} and {{ $location['lng'] }}.
+
+This makes the map dynamic.
+
+🌐 Step 5 — Add Route
+
+File: routes/web.php
+
+use App\Http\Controllers\MapController;
+
+// When user opens /map, call index() method of MapController
+Route::get('/map', [MapController::class, 'index']);
+
+
+Explanation:
+
+Visiting http://127.0.0.1:8000/map calls index() in MapController.
+
+Loads map.blade.php.
+
+Demonstrates how URL → Controller → View works.
+
+🔑 Step 6 — Generate Google Maps API Key
+
+Why API Key is needed:
+
+Google verifies requests come from allowed websites.
+
+Prevents misuse and quota overflows.
+
+Steps to get the key:
+
+Go to Google Cloud Console
+.
+
+Create a new project.
+
+Enable Maps JavaScript API.
+
+Create API Key and copy it.
+
+Replace YOUR_API_KEY in Blade with this key.
+
+🖥️ Step 7 — Create Blade View
+
+File: resources/views/map.blade.php
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Map in Laravel 12</title>
+    <style>
+        /* Map container size */
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Google Map Example (Laravel 12)</h2>
+
+<!-- Map will load inside this div -->
+<div id="map"></div>
+
+<script>
+    // Function to initialize Google Map
+    function initMap() {
+
+        // Get coordinates from Laravel controller
+        var location = {
+            lat: {{ $location['lat'] }},
+            lng: {{ $location['lng'] }}
+        };
+
+        // Create the map
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 16,          // Zoom level
+            center: location   // Center on coordinates
+        });
+
+        // Add marker
+        new google.maps.Marker({
+            position: location,
+            map: map,
+            title: "Excelsior Technologies®"
+        });
+    }
+</script>
+
+<!-- Load Google Maps JavaScript API -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+
+</body>
+</html>
+
+
+Explanation of Blade File:
+
+<div id="map"></div> → Container for the map.
+
+CSS ensures the map has height and width.
+
+initMap() is called automatically after the script loads.
+
+$location['lat'] and $location['lng'] pass PHP values to JS.
+
+new google.maps.Marker({...}) adds a marker.
+
+Replace YOUR_API_KEY with your actual Google Maps API Key.
+
+▶️ Step 8 — Run the Laravel Application
+php artisan serve
+
+
+Open in browser:
+
+http://127.0.0.1:8000/map
+
+
+Result:
+
+Google Map loads.
+
+Marker shows the location.
+
+No database is needed.
+
+Fully functional map for practice, assignments, or viva.
+
+📚 Project Structure (Explained)
+google-map-app/
+│
+├── app/
+│   └── Http/
+│       └── Controllers/
+│           └── MapController.php   <-- Logic for map
+│
+├── resources/
+│   └── views/
+│       └── map.blade.php           <-- Map UI using HTML + JS
+│
+└── routes/
+    └── web.php                     <-- URL for accessing map
