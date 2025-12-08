@@ -2,7 +2,7 @@
 
 Project Name: google-map-app
 Laravel Version: 12.x
-Author: Manasi Patel
+By: Manasi Patel
 Date: 2025
 
 🚀 Project Aim
@@ -33,17 +33,10 @@ Dynamically displaying locations from a database.
 
 Learning how to pass PHP data to JavaScript in Blade templates.
 
-🛠️ Prerequisites
-
-PHP >= 8.1
-
-Composer
-
-Laravel 12
-
-Google Maps API Key
-
 STEP 1: Create Laravel 12 Project
+
+Command:
+
 composer create-project laravel/laravel google-map-app "12.*"
 cd google-map-app
 php artisan serve
@@ -58,16 +51,20 @@ Creates google-map-app folder.
 Starts the development server.
 
 STEP 2: Create Controller
+
+Command:
+
 php artisan make:controller MapController
 
 
 Explanation:
 
-Controllers handle logic and send data to views.
+Controllers handle the logic and send data to views.
 
 MapController will manage the map page and provide latitude/longitude to Blade.
 
-Controller Code: app/Http/Controllers/MapController.php
+File: app/Http/Controllers/MapController.php
+
 <?php
 
 namespace App\Http\Controllers;
@@ -76,25 +73,32 @@ use Illuminate\Http\Request;
 
 class MapController extends Controller
 {
-    // Function to load the map page
     public function index()
     {
-        // Default location coordinates (Excelsior Technologies, Ahmedabad)
+        // Default location: Excelsior Technologies, Ahmedabad
         $location = [
             'lat' => 23.0455039,  // Latitude
             'lng' => 72.5051614   // Longitude
         ];
 
-        // Send $location array to the Blade view named 'map'
+        // Send coordinates to Blade view
         return view('map', compact('location'));
     }
 }
 
-STEP 3: Add Route
-File: routes/web.php
-<?php
 
-use Illuminate\Support\Facades\Route;
+Explanation:
+
+$location array stores latitude & longitude.
+
+compact('location') sends data to the Blade view.
+
+Blade can access them as {{ $location['lat'] }} and {{ $location['lng'] }}.
+
+STEP 3: Add Route
+
+File: routes/web.php
+
 use App\Http\Controllers\MapController;
 
 // Route to display Google Map
@@ -129,7 +133,10 @@ Create an API Key.
 Replace YOUR_API_KEY in Blade with this key.
 
 STEP 5: Create Blade View
-File: resources/views/map.blade.php
+
+Folder: resources/views
+File: map.blade.php
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -137,8 +144,8 @@ File: resources/views/map.blade.php
     <style>
         /* Container for Google Map */
         #map {
-            height: 500px; /* Map height */
-            width: 100%;   /* Map full width */
+            height: 500px;  /* Map height */
+            width: 100%;    /* Map width */
         }
     </style>
 </head>
@@ -146,39 +153,53 @@ File: resources/views/map.blade.php
 
 <h2 style="text-align:center;">Google Map Example (Laravel 12)</h2>
 
+<!-- Map container -->
 <div id="map"></div>
 
 <script>
-    // Function to initialize Google Map
     function initMap() {
-        // Get coordinates passed from Laravel Blade
+        // Get coordinates from Laravel
         var location = {
-            lat: {{ $location['lat'] }},
-            lng: {{ $location['lng'] }}
+            lat: {{ $location['lat'] }},  // Latitude from Controller
+            lng: {{ $location['lng'] }}   // Longitude from Controller
         };
 
-        // Create a new map centered at the location
+        // Initialize map
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 16,
-            center: location
+            zoom: 16,           // Zoom level
+            center: location    // Center map on location
         });
 
-        // Add a marker at the location
+        // Add marker
         new google.maps.Marker({
-            position: location,
-            map: map,
-            title: "Excelsior Technologies®"
+            position: location,          // Marker position
+            map: map,                    // Attach to map
+            title: "Excelsior Technologies®"  // Tooltip
         });
     }
 </script>
 
-<!-- Load Google Maps API -->
+<!-- Load Google Maps JavaScript API -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
 
 </body>
 </html>
 
+
+Explanation:
+
+<div id="map"></div> → Container for the map.
+
+CSS ensures height & width of the map.
+
+initMap() initializes the map using Laravel coordinates.
+
+Marker displays the company location dynamically.
+
 STEP 6: Run the Application
+
+Command:
+
 php artisan serve
 
 
@@ -195,7 +216,7 @@ Fully functional and dynamic.
 
 No database needed.
 
-📁 Project Structure
+📚 Project Structure
 google-map-app/
 │
 ├── app/
