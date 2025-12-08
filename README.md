@@ -35,10 +35,11 @@ STEP 1: Create Laravel 12 Project
 
 Command:
 
+```
 composer create-project laravel/laravel google-map-app "12.*"
 cd google-map-app
 php artisan serve
-
+```
 
 Explanation:
 
@@ -51,12 +52,12 @@ Starts the development server.
 STEP 2: Create Controller
 
 Command:
-
+```
 php artisan make:controller MapController
-
+```
 
 File: app/Http/Controllers/MapController.php
-
+```
 <?php
 
 namespace App\Http\Controllers;
@@ -77,16 +78,25 @@ class MapController extends Controller
         return view('map', compact('location'));
     }
 }
-
+```
 STEP 3: Add Route
 
 File: routes/web.php
+```
+<?php
 
 use App\Http\Controllers\MapController;
+use Illuminate\Support\Facades\Route;
 
-// Route to display Google Map
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+
 Route::get('/map', [MapController::class, 'index']);
 
+```
 STEP 4: Generate Google Maps API Key
 
 Steps:
@@ -105,7 +115,7 @@ Replace YOUR_API_KEY in Blade with this key.
 STEP 5: Create Blade View
 
 File: resources/views/map.blade.php
-
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -153,18 +163,18 @@ File: resources/views/map.blade.php
 
 </body>
 </html>
-
+```
 STEP 6: Run the Application
 
 Command:
-
+```
 php artisan serve
-
+```
 
 Open in browser:
-
+```
 http://127.0.0.1:8000/map
-
+```
 
 Result:
 
