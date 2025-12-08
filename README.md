@@ -43,7 +43,7 @@ composer create-project laravel/laravel google-map-app "12.*"
 
 Explanation:
 
-Downloads Laravel 12 project files.
+Downloads all Laravel 12 project files.
 
 "12.*" ensures Laravel version 12 is installed.
 
@@ -84,7 +84,6 @@ class MapController extends Controller
     public function index()
     {
         // Default location (example: Excelsior Technologies, Ahmedabad)
-        // Latitude and Longitude values
         $location = [
             'lat' => 23.0455039,  // Latitude
             'lng' => 72.5051614   // Longitude
@@ -104,7 +103,7 @@ compact('location') sends the array to the Blade view.
 
 Access in Blade as {{ $location['lat'] }} and {{ $location['lng'] }}.
 
-This makes the map dynamic.
+Makes the map dynamic, not hard-coded.
 
 🌐 Step 5 — Add Route
 
@@ -122,7 +121,7 @@ Visiting http://127.0.0.1:8000/map calls index() in MapController.
 
 Loads map.blade.php.
 
-Demonstrates how URL → Controller → View works.
+Demonstrates URL → Controller → View flow in Laravel.
 
 🔑 Step 6 — Generate Google Maps API Key
 
@@ -130,7 +129,7 @@ Why API Key is needed:
 
 Google verifies requests come from allowed websites.
 
-Prevents misuse and quota overflows.
+Prevents misuse and quota overflow.
 
 Steps to get the key:
 
@@ -206,7 +205,7 @@ Explanation of Blade File:
 
 CSS ensures the map has height and width.
 
-initMap() is called automatically after the script loads.
+initMap() is called automatically when the script loads.
 
 $location['lat'] and $location['lng'] pass PHP values to JS.
 
@@ -247,3 +246,12 @@ google-map-app/
 │
 └── routes/
     └── web.php                     <-- URL for accessing map
+
+
+✅ You successfully integrated Google Maps in Laravel 12
+
+Map loads on browser
+
+Marker displays default location
+
+Fully dynamic and beginner-friendly
