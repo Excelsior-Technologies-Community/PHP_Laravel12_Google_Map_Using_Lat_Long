@@ -23,8 +23,6 @@ Make a fully responsive, beginner-friendly map page.
 
 📌 Why Google Maps in Laravel?
 
-Integrating Google Maps is useful for:
-
 Showing company locations, offices, or branches.
 
 Adding markers for stores, events, or real estate.
@@ -57,12 +55,6 @@ Command:
 php artisan make:controller MapController
 
 
-Explanation:
-
-Controllers handle the logic and send data to views.
-
-MapController will manage the map page and provide latitude/longitude to Blade.
-
 File: app/Http/Controllers/MapController.php
 
 <?php
@@ -86,15 +78,6 @@ class MapController extends Controller
     }
 }
 
-
-Explanation:
-
-$location array stores latitude & longitude.
-
-compact('location') sends data to the Blade view.
-
-Blade can access them as {{ $location['lat'] }} and {{ $location['lng'] }}.
-
 STEP 3: Add Route
 
 File: routes/web.php
@@ -104,20 +87,7 @@ use App\Http\Controllers\MapController;
 // Route to display Google Map
 Route::get('/map', [MapController::class, 'index']);
 
-
-Explanation:
-
-Visiting /map calls index() in MapController.
-
-Loads map.blade.php view.
-
 STEP 4: Generate Google Maps API Key
-
-Why API Key is needed:
-
-Google verifies requests come from allowed websites.
-
-Prevents misuse or quota overuse.
 
 Steps:
 
@@ -134,8 +104,7 @@ Replace YOUR_API_KEY in Blade with this key.
 
 STEP 5: Create Blade View
 
-Folder: resources/views
-File: map.blade.php
+File: resources/views/map.blade.php
 
 <!DOCTYPE html>
 <html>
@@ -184,17 +153,6 @@ File: map.blade.php
 
 </body>
 </html>
-
-
-Explanation:
-
-<div id="map"></div> → Container for the map.
-
-CSS ensures height & width of the map.
-
-initMap() initializes the map using Laravel coordinates.
-
-Marker displays the company location dynamically.
 
 STEP 6: Run the Application
 
