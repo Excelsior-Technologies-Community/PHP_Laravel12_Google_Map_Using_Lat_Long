@@ -33,6 +33,16 @@ Dynamically displaying locations from a database.
 
 Learning how to pass PHP data to JavaScript in Blade templates.
 
+🛠️ Prerequisites
+
+PHP >= 8.1
+
+Composer
+
+Laravel 12
+
+Google Maps API Key
+
 STEP 1: Create Laravel 12 Project
 composer create-project laravel/laravel google-map-app "12.*"
 cd google-map-app
@@ -53,7 +63,7 @@ php artisan make:controller MapController
 
 Explanation:
 
-Controllers handle the logic and send data to views.
+Controllers handle logic and send data to views.
 
 MapController will manage the map page and provide latitude/longitude to Blade.
 
@@ -77,13 +87,11 @@ class MapController extends Controller
 
         // Send $location array to the Blade view named 'map'
         return view('map', compact('location'));
-        // compact('location') creates an array ['location' => $location]
-        // Blade can now access $location['lat'] and $location['lng']
     }
 }
 
 STEP 3: Add Route
-routes/web.php
+File: routes/web.php
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -95,7 +103,7 @@ Route::get('/map', [MapController::class, 'index']);
 
 Explanation:
 
-Visiting /map calls the index() method in MapController.
+Visiting /map calls index() in MapController.
 
 Loads map.blade.php view.
 
@@ -118,10 +126,10 @@ Enable Maps JavaScript API.
 
 Create an API Key.
 
-Replace YOUR_API_KEY in the Blade file with this key.
+Replace YOUR_API_KEY in Blade with this key.
 
 STEP 5: Create Blade View
-resources/views/map.blade.php
+File: resources/views/map.blade.php
 <!DOCTYPE html>
 <html>
 <head>
@@ -136,10 +144,8 @@ resources/views/map.blade.php
 </head>
 <body>
 
-<!-- Page Heading -->
 <h2 style="text-align:center;">Google Map Example (Laravel 12)</h2>
 
-<!-- Google Map Container -->
 <div id="map"></div>
 
 <script>
@@ -147,41 +153,30 @@ resources/views/map.blade.php
     function initMap() {
         // Get coordinates passed from Laravel Blade
         var location = {
-            lat: {{ $location['lat'] }},  // Latitude from controller
-            lng: {{ $location['lng'] }}   // Longitude from controller
+            lat: {{ $location['lat'] }},
+            lng: {{ $location['lng'] }}
         };
 
         // Create a new map centered at the location
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 16,            // Zoom level (1-20)
-            center: location     // Center map at coordinates
+            zoom: 16,
+            center: location
         });
 
         // Add a marker at the location
         new google.maps.Marker({
-            position: location,  // Marker position
-            map: map,            // Attach to our map
-            title: "Excelsior Technologies®"  // Tooltip text on hover
+            position: location,
+            map: map,
+            title: "Excelsior Technologies®"
         });
     }
 </script>
 
-<!-- Load Google Maps API (replace YOUR_API_KEY with actual key) -->
+<!-- Load Google Maps API -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
 
 </body>
 </html>
-
-
-Explanation of Key Parts:
-
-{{ $location['lat'] }} and {{ $location['lng'] }} → Pass PHP variables to JavaScript.
-
-initMap() → Called automatically by Google Maps API callback.
-
-zoom: 16 → Close-up view; higher numbers zoom in more.
-
-Marker → Shows a pin with your company name on the map.
 
 STEP 6: Run the Application
 php artisan serve
@@ -200,7 +195,7 @@ Fully functional and dynamic.
 
 No database needed.
 
-📚 Project Structure
+📁 Project Structure
 google-map-app/
 │
 ├── app/
