@@ -4,7 +4,7 @@ Project Name: google-map-app
 Laravel Version: 12.x
 By: Manasi Patel
 Date: 2025
-
+---
 🚀 Project Aim
 
 This project demonstrates how to:
@@ -20,7 +20,7 @@ Pass latitude and longitude from Laravel to JavaScript.
 Display a marker on the map.
 
 Make a fully responsive, beginner-friendly map page.
-
+---
 📌 Why Google Maps in Laravel?
 
 Showing company locations, offices, or branches.
@@ -30,7 +30,7 @@ Adding markers for stores, events, or real estate.
 Dynamically displaying locations from a database.
 
 Learning how to pass PHP data to JavaScript in Blade templates.
-
+---
 STEP 1: Create Laravel 12 Project
 
 Command:
@@ -48,7 +48,7 @@ Installs Laravel 12 project.
 Creates google-map-app folder.
 
 Starts the development server.
-
+---
 STEP 2: Create Controller
 
 Command:
