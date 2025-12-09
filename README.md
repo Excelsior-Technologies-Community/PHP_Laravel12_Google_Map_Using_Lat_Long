@@ -206,9 +206,10 @@ Google Map loads.
 Marker is displayed at Excelsior Technologies, Ahmedabad.
 
 Fully functional, dynamic, and responsive.
-```
+
 📚 Project Structure
-google-map-app/
+```
+PHP_Laravel12_Google_Map_Using_Lat_Long/
 │
 ├── app/
 │   └── Http/
