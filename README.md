@@ -1,4 +1,4 @@
-🌐 Laravel 12 – Google Map Integration Demo
+🌐 PHP_Laravel12_Google_Map_Using_Lat_Long
 ---
 Project Name: google-map-app
 Laravel Version: 12.x
@@ -35,8 +35,8 @@ STEP 1: Create Laravel 12 Project
 
 Command:
 ```
-composer create-project laravel/laravel google-map-app "12.*"
-cd google-map-app
+composer create-project laravel/laravel PHP_Laravel12_Google_Map_Using_Lat_Long "12.*"
+cd PHP_Laravel12_Google_Map_Using_Lat_Long
 php artisan serve
 ```
 
