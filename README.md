@@ -1,11 +1,11 @@
-🌐 PHP_Laravel12_Google_Map_Using_Lat_Long
+ PHP_Laravel12_Google_Map_Using_Lat_Long
 ---
 Project Name: PHP_Laravel12_Google_Map_Using_Lat_Long
 Laravel Version: 12.x
 By: Manasi Patel
 Date: 2025
 ---
-🚀 Project Aim
+ Project Aim
 
 This project demonstrates how to:
 
@@ -21,7 +21,7 @@ Display a marker on the map.
 
 Make a fully responsive, beginner-friendly map page.
 ---
-📌 Why Google Maps in Laravel?
+ Why Google Maps in Laravel?
 
 Display company locations, offices, or branches.
 
@@ -207,7 +207,7 @@ Marker is displayed at Excelsior Technologies, Ahmedabad.
 
 Fully functional, dynamic, and responsive.
 
-📚 Project Structure
+ Project Structure
 ```
 PHP_Laravel12_Google_Map_Using_Lat_Long/
 │
