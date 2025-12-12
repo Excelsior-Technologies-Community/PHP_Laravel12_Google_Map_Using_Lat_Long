@@ -201,6 +201,11 @@ http://127.0.0.1:8000/map
 
 Result:
 ---
+
+<img width="1919" height="972" alt="Screenshot 2025-12-08 131801" src="https://github.com/user-attachments/assets/9b7fff5b-7fdb-42b4-9bb4-05fe38c2ef90" />
+
+
+
 Google Map loads.
 
 Marker is displayed at Excelsior Technologies, Ahmedabad.
