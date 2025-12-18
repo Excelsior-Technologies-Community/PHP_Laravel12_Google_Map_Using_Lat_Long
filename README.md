@@ -1,11 +1,15 @@
  PHP_Laravel12_Google_Map_Using_Lat_Long
 ---
 Project Name: PHP_Laravel12_Google_Map_Using_Lat_Long
+
 Laravel Version: 12.x
+
 By: Manasi Patel
+
 Date: 2025
+
+Project Aim
 ---
- Project Aim
 
 This project demonstrates how to:
 
