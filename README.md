@@ -7,9 +7,9 @@ Laravel Version: 12.x
 By: Manasi Patel
 
 Date: 2025
----
- Project Aim
 
+Project Aim
+---
 This project demonstrates how to:
 
 Integrate Google Maps inside a Laravel 12 application.
