@@ -10,6 +10,7 @@ Date: 2025
 
 Project Aim
 ---
+<<<<<<< HEAD
 
 This project demonstrates how to:
 
@@ -52,6 +53,49 @@ cd google-map-app → Moves into the project directory.
 
 php artisan serve → Starts a local development server at http://127.0.0.1:8000.
 
+=======
+This project demonstrates how to:
+
+Integrate Google Maps inside a Laravel 12 application.
+
+Create a controller to manage map data.
+
+Setup routes to load the map page.
+
+Pass latitude and longitude from Laravel to JavaScript.
+
+Display a marker on the map.
+
+Make a fully responsive, beginner-friendly map page.
+---
+ Why Google Maps in Laravel?
+
+Display company locations, offices, or branches.
+
+Add markers for stores, events, or real estate.
+
+Dynamically display locations from a database.
+
+Learn how to pass PHP data to JavaScript in Blade templates.
+---
+STEP 1: Create Laravel 12 Project
+
+Command:
+```
+composer create-project laravel/laravel PHP_Laravel12_Google_Map_Using_Lat_Long "12.*"
+cd PHP_Laravel12_Google_Map_Using_Lat_Long
+php artisan serve
+```
+
+Explanation:
+
+composer create-project laravel/laravel google-map-app "12.*" → Installs Laravel version 12 into a folder named google-map-app.
+
+cd google-map-app → Moves into the project directory.
+
+php artisan serve → Starts a local development server at http://127.0.0.1:8000.
+
+>>>>>>> development
 STEP 2: Create Controller
 
 Command:
