@@ -8,16 +8,13 @@ class MapController extends Controller
 {
     public function index()
     {
-        // Default Google Map location (example: Ahmedabad)
-        // Latitude and Longitude values that will be passed to the map
-        $location = [
-           'lat' => 23.0452748,   // Latitude
-            'lng' => 72.5053775  // Longitude
+        // Multiple locations (Ahmedabad example)
+        $locations = [
+            ['lat' => 23.0452748, 'lng' => 72.5053775, 'title' => 'Location 1'],
+            ['lat' => 23.0225, 'lng' => 72.5714, 'title' => 'Location 2'],
+            ['lat' => 23.0300, 'lng' => 72.5800, 'title' => 'Location 3'],
         ];
 
-        // Passing the $location array to the view
-        // compact('location') converts it into ['location' => $location]
-        return view('map', compact('location'));
+        return view('map', compact('locations'));
     }
 }
-
